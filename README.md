@@ -98,10 +98,8 @@ private double bar(double x, int n) {
       	return x;
 }
 ```
-
-    * What is the return value when **bar(2, 3)** is executed?
-
-    * What is the return value when **bar(3, -2)** is executed?
+  * What is the return value when **bar(2, 3)** is executed?
+  * What is the return value when **bar(3, -2)** is executed?
  
 3. Consider the code below. What is the problem with it?
 ```java
@@ -112,7 +110,7 @@ private void bad1() {
 ```
  
 4. Consider the code below. What is the problem with it?
-``java
+```java
 private int bad2(int n) {
    if (n == 0) {
       	return 0;
@@ -132,10 +130,8 @@ private int bad3(int n) {
 	return n + bad3(n + 1);
 }
 ```
-
-    * Write a method call to **bad3()** that will cause problems.
-
-    * Write a method call to **bad3()** that will not cause problems.
+  * Write a method call to **bad3()** that will cause problems.
+  * Write a method call to **bad3()** that will not cause problems.
 
 ## (Optional) Exercise Four: Writing Recursive Methods
 For this exercise, complete the recursive methods in the **ExerciseFour** class in the `ex04` package. You may use the provided unit tests to check whether your methods are functioning correctly. Use recursion to complete each of these methods (even if you can think of a non-recursive way to solve them)! The methods you should complete are as follows:
