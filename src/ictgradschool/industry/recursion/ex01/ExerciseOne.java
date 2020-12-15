@@ -61,13 +61,17 @@ public class ExerciseOne {
         Comparator<Shape> shapeComparator = new Comparator<Shape>() {
             @Override
             public int compare(Shape o1, Shape o2) {
+                double diff = (double) o1.getNumSides() - (double) o2.getNumSides();
+                if (diff != 0) {
 
-                return 0;
+                    return Double.valueOf(o1.getNumSides()).compareTo((double) o2.getNumSides());
+                }
+                return Double.valueOf(o2.getArea()).compareTo(o1.getArea());
             }
         };
 
         // TODO Sort shapeList using the Collections.sort method and shapeComparator
-
+        Collections.sort(shapeList,shapeComparator);
 
         // Print out the result. Do not edit below this line.
         NumberFormat formatter = new DecimalFormat("#.##");

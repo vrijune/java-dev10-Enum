@@ -1,6 +1,7 @@
 package ictgradschool.industry.recursion.ex02;
 
-import java.util.Map;
+import java.lang.management.ManagementPermission;
+import java.util.*;
 
 /**
  * Main program for Lab 10 Ex 2, which should print out a table showing the frequency of all alphanumeric characters
@@ -21,7 +22,8 @@ public class ExerciseTwo {
         text = text.toUpperCase();
 
         // TODO Initialize the frequencies map to an appropriate concrete instance
-        Map<Character, Integer> frequencies = null;
+        Map<Character, Integer> frequencies = new TreeMap<>();
+
 
         // Loop through all characters in the given string
         for (char c : text.toCharArray()) {
@@ -31,46 +33,61 @@ public class ExerciseTwo {
 
                 // TODO If the map already contains c as a key, increment its value by 1.
                 // TODO Otherwise, add it as a new key with the initial value of 1.
+                if (frequencies.containsKey(c)) {
+                    frequencies.put(c, frequencies.get(c) + 1);
+                } else {
+                    frequencies.put(c, 1);
+                }
+            }
+
+            // TODO BONUS: Add any missing keys to the map
+            // (i.e. loop through all characters from A-Z and 0-9. If that character doesn't appear in the text,
+            // add it as a key here with frequency 0).
+            for (char x = '0'; x <= '9'; x++) {
+                if (!frequencies.containsKey(x))
+                frequencies.put(x, 0);
+            }
+            for (char x = 'A'; x <= 'Z'; x++) {
+                if (!frequencies.containsKey(x))
+                frequencies.put(x, 0);
 
             }
 
+        }  return frequencies;
+    }
+        /**
+         * Prints the given map in a user-friendly table format.
+         *
+         * @param frequencies the map to print
+         */
+        private void printFrequencies (Map < Character, Integer > frequencies){
+
+            System.out.println("Char:\tFrequencies:");
+            System.out.println("--------------------");
+
+            // TODO Loop through the entire map and print out all the characters (keys)
+            // TODO and their frequencies (values) in a table.
+
+            for (char keys : frequencies.keySet()) {
+                Integer values = frequencies.get(keys);
+
+                System.out.println("Key: " + keys + ",Values " + values.intValue());
+
+            }
         }
 
-        // TODO BONUS: Add any missing keys to the map
-        // (i.e. loop through all characters from A-Z and 0-9. If that character doesn't appear in the text,
-        // add it as a key here with frequency 0).
+        /**
+         * Main program flow. Do not edit.
+         */
+        private void start () {
+            Map<Character, Integer> frequencies = getCharacterFrequencies(Constants.TEXT);
+            printFrequencies(frequencies);
+        }
 
-        return frequencies;
-
+        /**
+         * Program entry point. Do not edit.
+         */
+        public static void main (String[]args){
+            new ExerciseTwo().start();
+        }
     }
-
-    /**
-     * Prints the given map in a user-friendly table format.
-     *
-     * @param frequencies the map to print
-     */
-    private void printFrequencies(Map<Character, Integer> frequencies) {
-
-        System.out.println("Char:\tFrequencies:");
-        System.out.println("--------------------");
-
-        // TODO Loop through the entire map and print out all the characters (keys)
-        // TODO and their frequencies (values) in a table.
-
-    }
-
-    /**
-     * Main program flow. Do not edit.
-     */
-    private void start() {
-        Map<Character, Integer> frequencies = getCharacterFrequencies(Constants.TEXT);
-        printFrequencies(frequencies);
-    }
-
-    /**
-     * Program entry point. Do not edit.
-     */
-    public static void main(String[] args) {
-        new ExerciseTwo().start();
-    }
-}
